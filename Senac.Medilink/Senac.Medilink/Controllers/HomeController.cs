@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Senac.Medilink.Models;
 using System.Diagnostics;
 
 namespace Senac.Medilink.Controllers
@@ -13,25 +12,26 @@ namespace Senac.Medilink.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
             return View();
         }
 
-        public IActionResult Alternativo()
+        public async Task<IActionResult> Alternativo()
         {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public async Task<IActionResult> Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            _logger.LogCritical("Erro");
+            return BadRequest();
         }
     }
 }
