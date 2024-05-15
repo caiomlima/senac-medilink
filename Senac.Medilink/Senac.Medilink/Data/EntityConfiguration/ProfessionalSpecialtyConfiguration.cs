@@ -2,15 +2,14 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Senac.Medilink.Data.Entity;
-using Senac.Medilink.Data.Entity.User;
 
 namespace Senac.Medilink.Data.EntityConfiguration
 {
-    public class ProfessionalConfiguration : IEntityTypeConfiguration<Professional>
+    public class ProfessionalSpecialtyConfiguration : IEntityTypeConfiguration<ProfessionalSpecialty>
     {
-        public void Configure(EntityTypeBuilder<Professional> builder)
+        public void Configure(EntityTypeBuilder<ProfessionalSpecialty> builder)
         {
-            builder.ToTable("professional");
+            builder.ToTable("professionalSpecialty");
 
             builder.HasKey(x => x.Id);
 
@@ -26,9 +25,8 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .IsRequired();
 
             builder
-                .Property(x => x.Document)
-                .HasColumnName("document")
-                .IsRequired();
+                .Property(x => x.Description)
+                .HasColumnName("description");
 
             builder
                 .Property(p => p.CreatedAt)
@@ -55,21 +53,6 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .HasColumnName("active")
                 .HasDefaultValue(true)
                 .IsRequired();
-
-            builder
-                .HasOne<User>(x => x.User)
-                .WithOne(x => x.Professional)
-                .HasForeignKey<Professional>(x => x.Id);
-
-            builder
-                .HasMany(x => x.Schedules)
-                .WithOne(x => x.Professional)
-                .HasForeignKey(x => x.ProfessionalId);
-
-            builder
-                .HasMany(x => x.ProfessionalSpecialties)
-                .WithOne(x => x.Professional)
-                .HasForeignKey(x => x.ProfessionalId);
         }
     }
 }

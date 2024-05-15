@@ -45,7 +45,6 @@ namespace Senac.Medilink.Data.Entity
 
         public virtual Patient Patient { get; private set; }
         public virtual Professional Professional { get; private set; }
-        public virtual Specialty Specialty { get; private set; }
         public virtual Unit Unit { get; private set; }
 
         internal void Inactivate()

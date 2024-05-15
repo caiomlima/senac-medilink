@@ -2,15 +2,14 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Senac.Medilink.Data.Entity;
-using Senac.Medilink.Data.Entity.User;
 
 namespace Senac.Medilink.Data.EntityConfiguration
 {
-    public class ProfessionalConfiguration : IEntityTypeConfiguration<Professional>
+    public class ScheduleConfiguration : IEntityTypeConfiguration<Schedule>
     {
-        public void Configure(EntityTypeBuilder<Professional> builder)
+        public void Configure(EntityTypeBuilder<Schedule> builder)
         {
-            builder.ToTable("professional");
+            builder.ToTable("schedule");
 
             builder.HasKey(x => x.Id);
 
@@ -21,13 +20,13 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .IsRequired();
 
             builder
-                .Property(x => x.Name)
-                .HasColumnName("name")
-                .IsRequired();
-
-            builder
-                .Property(x => x.Document)
-                .HasColumnName("document")
+                .Property(p => p.Date)
+                .HasColumnName("date")
+                .HasColumnType("datetime")
+                .HasConversion(new ValueConverter<DateTime, DateTime>(
+                    v => v.ToUniversalTime(),
+                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
+                )
                 .IsRequired();
 
             builder
@@ -51,25 +50,47 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .IsRequired();
 
             builder
+                .Property(x => x.Type)
+                .HasColumnName("type")
+                .HasConversion<int>()
+                .IsRequired();
+
+            builder
+                .Property(x => x.Status)
+                .HasColumnName("status")
+                .HasConversion<int>()
+                .IsRequired();
+
+            builder
+                .Property(x => x.Form)
+                .HasColumnName("form")
+                .HasConversion<int>()
+                .IsRequired();
+
+            builder
+                .Property(x => x.Result)
+                .HasColumnName("result");
+
+            builder
                 .Property(x => x.Active)
                 .HasColumnName("active")
                 .HasDefaultValue(true)
                 .IsRequired();
 
             builder
-                .HasOne<User>(x => x.User)
-                .WithOne(x => x.Professional)
-                .HasForeignKey<Professional>(x => x.Id);
+                .HasOne(x => x.Patient)
+                .WithMany(x => x.Schedules)
+                .HasForeignKey(x => x.PatientId);
 
             builder
-                .HasMany(x => x.Schedules)
-                .WithOne(x => x.Professional)
+                .HasOne(x => x.Professional)
+                .WithMany(x => x.Schedules)
                 .HasForeignKey(x => x.ProfessionalId);
 
             builder
-                .HasMany(x => x.ProfessionalSpecialties)
-                .WithOne(x => x.Professional)
-                .HasForeignKey(x => x.ProfessionalId);
+                .HasOne(x => x.Unit)
+                .WithMany(x => x.Schedules)
+                .HasForeignKey(x => x.UnitId);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Senac.Medilink.Data.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Patient> builder)
         {
-            builder.ToTable("user");
+            builder.ToTable("patient");
 
             builder.HasKey(x => x.Id);
 
@@ -54,7 +54,16 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .HasColumnName("active")
                 .HasDefaultValue(true)
                 .IsRequired();
+
+            builder
+                .HasOne<User>(x => x.User)
+                .WithOne(x => x.Patient)
+                .HasForeignKey<Patient>(x => x.Id);
+
+            builder
+                .HasMany(x => x.Schedules)
+                .WithOne(x => x.Patient)
+                .HasForeignKey(x => x.PatientId);
         }
     }
 }
-

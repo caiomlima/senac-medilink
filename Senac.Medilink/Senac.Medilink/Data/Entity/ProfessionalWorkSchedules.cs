@@ -11,22 +11,24 @@ namespace Senac.Medilink.Data.Entity
             DayOfWeek dayOfWeek,
             TimeSpan startTime,
             TimeSpan endTime,
-            long professionalId)
+            long professionalId,
+            long unitId)
         {
             DayOfWeek = dayOfWeek;
             StartTime = startTime;
             EndTime = endTime;
             ProfessionalId = professionalId;
-            Professionals = new List<Professional>();
-            Units = new List<Unit>();
+            UnitId = unitId;
         }
 
-        public DayOfWeek DayOfWeek { get; private set; }
-        public TimeSpan StartTime { get; private set; } // TODO verificar isso, se não time span é melhor
-        public TimeSpan EndTime { get; private set; } // TODO verificar isso, se não time span é melhor
         public long ProfessionalId { get; private set; }
+        public long UnitId { get; private set; }
+        public long ProfessionalSpecialtyId { get; private set; }
+        public DayOfWeek DayOfWeek { get; private set; }
+        public TimeSpan StartTime { get; private set; }
+        public TimeSpan EndTime { get; private set; }
 
-        public virtual ICollection<Professional> Professionals { get; private set; }
-        public virtual ICollection<Unit> Units { get; private set; }
+        public virtual Professional Professional { get; private set; }
+        public virtual Unit Unit { get; private set; }
     }
 }

@@ -1,8 +1,9 @@
-﻿using Senac.Medilink.Data.Entity.User;
+﻿using Senac.Medilink.Data.Entity.Common;
+using Senac.Medilink.Data.Entity.User;
 
 namespace Senac.Medilink.Data.Entity
 {
-    public class ProfessionalSpecialty
+    public class ProfessionalSpecialty : BaseEntity
     {
         public ProfessionalSpecialty() { }
 
@@ -15,16 +16,17 @@ namespace Senac.Medilink.Data.Entity
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Active = true;
-            Professionals = new List<Professional>();
         }
 
+        public long ProfessionalId { get; private set; }
         public string Name { get; private set; }
-        public string Description { get; private set; } // opcional
+        public string Description { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
         public bool Active { get; private set; }
 
-        public virtual ICollection<Professional> Professionals { get; private set; }
+        public virtual Professional Professional { get; private set; }
+        public virtual Unit Unit { get; private set; }
 
         internal void Inactivate()
         {

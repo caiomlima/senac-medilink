@@ -16,6 +16,7 @@ namespace Senac.Medilink.Data.Entity
             UpdatedAt = DateTime.UtcNow;
             Active = true;
             Schedules = new List<Schedule>();
+            WorkSchedules = new List<ProfessionalWorkSchedules>();
         }
 
         public string Name { get; private set; }
@@ -25,6 +26,7 @@ namespace Senac.Medilink.Data.Entity
         public bool Active { get; private set; }
 
         public virtual ICollection<Schedule> Schedules { get; private set; }
+        public virtual ICollection<ProfessionalWorkSchedules> WorkSchedules { get; private set; }
 
         internal void Inactivate()
         {

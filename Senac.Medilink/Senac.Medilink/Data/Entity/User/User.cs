@@ -20,10 +20,8 @@ namespace Senac.Medilink.Data.Entity.User
             Active = true;
         }
 
-        // TODO Adicionar um user role ??? acho que type já deve fazer isso
         public string Email { get; private set; }
         public string Password { get; private set; }
-        //public string Avatar { get; set; } // TODO MANO, nem considera isso, puta trampo ....
         public UserType UserType { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }

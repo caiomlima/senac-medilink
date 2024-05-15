@@ -17,17 +17,17 @@ namespace Senac.Medilink.Data.Entity
             UpdatedAt = DateTime.UtcNow;
             Active = true;
             Professionals = new List<Professional>();
-            //ProfessionalSpecialties = new List<ProfessionalSpecialty>();
+            ProfessionalSpecialties = new List<ProfessionalSpecialty>();
         }
 
         public string Name { get; private set; }
-        public string Description { get; private set; } // opcional
+        public string Description { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
         public bool Active { get; private set; }
 
         public virtual ICollection<Professional> Professionals { get; private set; }
-        //public virtual ICollection<ProfessionalSpecialty> ProfessionalSpecialties { get; private set; }
+        public virtual ICollection<ProfessionalSpecialty> ProfessionalSpecialties { get; private set; }
 
         internal void Inactivate()
         {
