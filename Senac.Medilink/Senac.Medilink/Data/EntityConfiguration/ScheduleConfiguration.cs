@@ -13,6 +13,14 @@ namespace Senac.Medilink.Data.EntityConfiguration
 
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.ProfessionalId);
+            builder.HasIndex(x => x.PatientId);
+            builder.HasIndex(x => x.UnitId);
+            builder.HasIndex(x => new { x.StartDate, x.EndDate });
+            builder.HasIndex(x => x.Type);
+            builder.HasIndex(x => new { x.ProfessionalId, x.Status });
+            builder.HasIndex(x => x.Active);
+
             builder
                 .Property(x => x.Id)
                 .HasColumnName("id")
@@ -20,8 +28,18 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .IsRequired();
 
             builder
-                .Property(p => p.Date)
-                .HasColumnName("date")
+                .Property(p => p.StartDate)
+                .HasColumnName("startDate")
+                .HasColumnType("datetime")
+                .HasConversion(new ValueConverter<DateTime, DateTime>(
+                    v => v.ToUniversalTime(),
+                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
+                )
+                .IsRequired();
+
+            builder
+                .Property(p => p.EndDate)
+                .HasColumnName("endDate")
                 .HasColumnType("datetime")
                 .HasConversion(new ValueConverter<DateTime, DateTime>(
                     v => v.ToUniversalTime(),

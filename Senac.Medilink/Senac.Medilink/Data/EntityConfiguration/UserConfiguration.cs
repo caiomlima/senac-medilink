@@ -14,6 +14,8 @@ namespace Senac.Medilink.Data.EntityConfiguration
 
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.Email);
+
             builder
                 .Property(x => x.Id)
                 .HasColumnName("id")

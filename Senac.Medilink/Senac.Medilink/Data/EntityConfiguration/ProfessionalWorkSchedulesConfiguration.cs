@@ -12,6 +12,11 @@ namespace Senac.Medilink.Data.EntityConfiguration
 
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.ProfessionalId);
+            builder.HasIndex(x => x.UnitId);
+            builder.HasIndex(x => x.DayOfWeek);
+            builder.HasIndex(x => new { x.ProfessionalId, x.DayOfWeek });
+
             builder
                 .Property(x => x.Id)
                 .HasColumnName("id")

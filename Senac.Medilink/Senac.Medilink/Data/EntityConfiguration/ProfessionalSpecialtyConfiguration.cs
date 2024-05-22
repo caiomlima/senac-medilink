@@ -13,20 +13,15 @@ namespace Senac.Medilink.Data.EntityConfiguration
 
             builder.HasKey(x => x.Id);
 
+            builder.HasIndex(x => x.ProfessionalId);
+            builder.HasIndex(x => x.UnitId);
+            builder.HasIndex(x => new { x.ProfessionalId, x.UnitId });
+
             builder
                 .Property(x => x.Id)
                 .HasColumnName("id")
                 .ValueGeneratedOnAdd()
                 .IsRequired();
-
-            builder
-                .Property(x => x.Name)
-                .HasColumnName("name")
-                .IsRequired();
-
-            builder
-                .Property(x => x.Description)
-                .HasColumnName("description");
 
             builder
                 .Property(p => p.CreatedAt)
@@ -53,6 +48,21 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .HasColumnName("active")
                 .HasDefaultValue(true)
                 .IsRequired();
+
+            builder
+                .HasOne(x => x.Specialty)
+                .WithMany(x => x.ProfessionalSpecialties)
+                .HasForeignKey(x => x.SpecialtyId);
+
+            builder
+                .HasOne(x => x.Professional)
+                .WithMany(x => x.ProfessionalSpecialties)
+                .HasForeignKey(x => x.ProfessionalId);
+
+            builder
+                .HasOne(x => x.Unit)
+                .WithMany(x => x.ProfessionalSpecialties)
+                .HasForeignKey(x => x.UnitId);
         }
     }
 }

@@ -10,17 +10,19 @@ namespace Senac.Medilink.Data
         {
         }
 
-        // Users
         public DbSet<User> Users { get; set; }
         public DbSet<Professional> Professionals { get; set; }
         public DbSet<Patient> Patients { get; set; }
-
-        // Appointments
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Unit> Units { get; set; }
-
-        // Professional items
-        public DbSet<ProfessionalWorkSchedules> ProfessionalWorkSchedules { get; set; }
         public DbSet<Specialty> Specialties { get; set; }
+        public DbSet<ProfessionalSpecialty> ProfessionalSpecialties { get; set; }
+        public DbSet<ProfessionalWorkSchedules> ProfessionalWorkSchedules { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+        }
     }
 }

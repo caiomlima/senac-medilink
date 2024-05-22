@@ -17,6 +17,7 @@ namespace Senac.Medilink.Data.Entity
             Active = true;
             Schedules = new List<Schedule>();
             WorkSchedules = new List<ProfessionalWorkSchedules>();
+            ProfessionalSpecialties = new List<ProfessionalSpecialty>();
         }
 
         public string Name { get; private set; }
@@ -27,6 +28,7 @@ namespace Senac.Medilink.Data.Entity
 
         public virtual ICollection<Schedule> Schedules { get; private set; }
         public virtual ICollection<ProfessionalWorkSchedules> WorkSchedules { get; private set; }
+        public virtual ICollection<ProfessionalSpecialty> ProfessionalSpecialties { get; private set; }
 
         internal void Inactivate()
         {

@@ -37,7 +37,7 @@
 
     public enum ServiceType
     {
-        Schedule = 1,
+        Appointment = 1,
         Exam = 2,
     }
 }

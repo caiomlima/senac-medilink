@@ -13,7 +13,8 @@ namespace Senac.Medilink.Data.Entity
             long professionalId,
             long specialtyId,
             long unitId,
-            DateTime date,
+            DateTime startDate,
+            DateTime endDate,
             FormOfService formOfService,
             ServiceType type)
         {
@@ -21,7 +22,8 @@ namespace Senac.Medilink.Data.Entity
             ProfessionalId = professionalId;
             SpecialtyId = specialtyId;
             UnitId = unitId;
-            Date = date;
+            StartDate = startDate;
+            EndDate = endDate;
             Type = type; 
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
@@ -34,7 +36,8 @@ namespace Senac.Medilink.Data.Entity
         public long ProfessionalId { get; private set; }
         public long SpecialtyId { get; private set; }
         public long UnitId { get; private set; }
-        public DateTime Date { get; private set; }
+        public DateTime StartDate { get; private set; }
+        public DateTime EndDate { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
         public ServiceType Type { get; private set; }

@@ -8,23 +8,26 @@ namespace Senac.Medilink.Data.Entity
         public ProfessionalSpecialty() { }
 
         public ProfessionalSpecialty(
-            string name,
-            string description)
+            long specialtyId,
+            long professionalId,
+            long unitId)
         {
-            Name = name;
-            Description = description;
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Active = true;
+            SpecialtyId = specialtyId;
+            ProfessionalId = professionalId;
+            UnitId = unitId;
         }
 
+        public long SpecialtyId { get; private set; }
         public long ProfessionalId { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
+        public long UnitId { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
         public bool Active { get; private set; }
 
+        public virtual Specialty Specialty { get; private set; }
         public virtual Professional Professional { get; private set; }
         public virtual Unit Unit { get; private set; }
 
