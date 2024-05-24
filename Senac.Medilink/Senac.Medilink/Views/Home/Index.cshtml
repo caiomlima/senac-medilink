@@ -2,7 +2,8 @@
     ViewData["Title"] = "Página inicial";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container" style="text-align:center;">
+    <a class="btn btn-primary mb-1 mt-1" style="width:70%;" asp-area="" asp-controller="Schedule" asp-action="OnlineSchedule">Agendar Online</a>
+    <a  class="btn btn-primary mb-1 mt-1" style="width:70%;" asp-area="" asp-controller="Schedule" asp-action="PresentialSchedule">Agendar Presencial</a>
+    <a class="btn btn-primary mb-1 mt-1" style="width:70%;" asp-area="" asp-controller="Schedule" asp-action="ExamSchedule">Exame</a>
 </div>

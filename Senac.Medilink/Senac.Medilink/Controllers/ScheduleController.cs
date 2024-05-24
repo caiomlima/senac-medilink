@@ -13,5 +13,9 @@ namespace Senac.Medilink.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> ExamSchedule()
+        {
+            return View();
+        }
     }
 }
