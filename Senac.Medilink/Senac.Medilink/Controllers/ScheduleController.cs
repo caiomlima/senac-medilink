@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Senac.Medilink.Controllers
 {
+    [Authorize]
     public class ScheduleController : Controller
     {
         public async Task<IActionResult> OnlineSchedule()

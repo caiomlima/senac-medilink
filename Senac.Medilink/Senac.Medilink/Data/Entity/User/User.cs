@@ -1,4 +1,5 @@
 ﻿using Senac.Medilink.Common;
+using Senac.Medilink.Data.Dto.Request.Login;
 using Senac.Medilink.Data.Entity.Common;
 
 namespace Senac.Medilink.Data.Entity.User
@@ -18,6 +19,12 @@ namespace Senac.Medilink.Data.Entity.User
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Active = true;
+
+            //if (professional is not null)
+            //    Professional = professional;
+
+            //if (patient is not null)
+            //    Patient = patient;
         }
 
         public string Email { get; private set; }
@@ -29,6 +36,16 @@ namespace Senac.Medilink.Data.Entity.User
 
         public virtual Professional Professional { get; private set; }
         public virtual Patient Patient { get; private set; }
+
+        internal void AddProfessional(string name, string document)
+        {
+            Professional = new Professional(name, document);
+        }
+
+        internal void AddPatient(string name, string document)
+        {
+            Patient = new Patient(name, document);
+        }
 
         internal void Inactivate()
         {

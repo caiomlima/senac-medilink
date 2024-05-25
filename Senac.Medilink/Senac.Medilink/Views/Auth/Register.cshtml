@@ -1,0 +1,36 @@
+﻿@using Senac.Medilink.Common
+@model Senac.Medilink.Data.Dto.Request.Login.RegisterUserRequest
+
+@{
+    Layout = null; // Desativa o layout
+}
+
+<form asp-action="Register" method="post">
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" name="Email" required />
+    </div>
+    <div class="form-group">
+        <label for="Password">Senha</label>
+        <input type="password" name="Password" required />
+    </div>
+    <div class="form-group">
+        <label for="UserType">Tipo de usuário</label>
+        <select class="form-control" asp-for="UserType" asp-items="Html.GetEnumSelectList<UserType>()"></select>
+    </div>
+    <div class="form-group">
+        <label for="Name">Nome</label>
+        <input type="text" name="Name" required />
+    </div>
+    <div class="form-group">
+        <label for="Document">Documento</label>
+        <input type="text" name="Document" required />
+    </div>
+    <button type="submit">Cadastro</button>
+</form>
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@

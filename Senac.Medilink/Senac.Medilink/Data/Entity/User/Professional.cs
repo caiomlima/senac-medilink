@@ -22,7 +22,6 @@ namespace Senac.Medilink.Data.Entity.User
         public string Document { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
-        public long SpecialtyId { get; private set; }
         public bool Active { get; private set; }
 
         public virtual User User { get; private set; }
