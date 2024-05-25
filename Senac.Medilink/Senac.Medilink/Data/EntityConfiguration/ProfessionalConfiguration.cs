@@ -59,7 +59,8 @@ namespace Senac.Medilink.Data.EntityConfiguration
             builder
                 .HasOne<User>(x => x.User)
                 .WithOne(x => x.Professional)
-                .HasForeignKey<Professional>(x => x.Id);
+                .HasForeignKey<Professional>(x => x.Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder
                 .HasMany(x => x.Schedules)
