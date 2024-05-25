@@ -6,6 +6,39 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<div >
-    <partial name="_SpecialtyLayout"/>
+<div>
+    <partial name="_SpecialtyLayout" id="specialties"/>
 </div>
+@* <div>
+    <partial name="_Professionals" id="professionals"/>
+</div>
+ <div>
+    <partial name="_SpecialtyLayout" id="specialties" />
+</div> 
+
+<script>
+    $(function () {
+        GetProfessionals();
+    });
+    $('#specialtyBtn').on('click', function (e) {
+        var filters = {
+            specialtyId: $('#specialty').val()
+        };
+        GetProfessionals(filters);
+    });
+    function GetProfessionals(filters) {
+        $.ajax({
+            url: '/Professional/Search',
+            type: 'GET',
+            cache: false,
+            async: true,
+            dataType: "html",
+            data: filters
+        })
+        .done(function (result) {
+            $('#professionals').html(result);
+        }).fail(function (xhr) {
+            console.log('error : ' + xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+        });
+    }
+</script> *@
