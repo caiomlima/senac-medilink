@@ -10,7 +10,7 @@ namespace Senac.Medilink.Data.Entity
 
         public Schedule(
             long patientId,
-            long professionalId,
+            long? professionalId,
             long specialtyId,
             long unitId,
             DateTime startDate,
@@ -33,7 +33,7 @@ namespace Senac.Medilink.Data.Entity
         }
 
         public long PatientId { get; private set; }
-        public long ProfessionalId { get; private set; }
+        public long? ProfessionalId { get; private set; }
         public long SpecialtyId { get; private set; }
         public long UnitId { get; private set; }
         public DateTime StartDate { get; private set; }
