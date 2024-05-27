@@ -10,8 +10,8 @@ namespace Senac.Medilink.Data.Entity.User
         {
             Name = name;
             Document = document;
-            CreatedAt = DateTime.UtcNow;
-            UpdatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             Active = true;
             Schedules = new List<Schedule>();
         }
@@ -28,7 +28,7 @@ namespace Senac.Medilink.Data.Entity.User
         internal void Inactivate()
         {
             Active = false;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
     }
 }

@@ -25,8 +25,8 @@ namespace Senac.Medilink.Data.Entity
             StartDate = startDate;
             EndDate = endDate;
             Type = type; 
-            CreatedAt = DateTime.UtcNow;
-            UpdatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             Status = ScheduleStatus.Pending;
             Form = formOfService;
             Active = true;
@@ -34,8 +34,8 @@ namespace Senac.Medilink.Data.Entity
 
         public long PatientId { get; private set; }
         public long? ProfessionalId { get; private set; }
-        public long SpecialtyId { get; private set; }
         public long UnitId { get; private set; }
+        public long SpecialtyId { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -53,19 +53,19 @@ namespace Senac.Medilink.Data.Entity
         internal void Inactivate()
         {
             Active = false;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
 
         internal void SetStatusConcluded()
         {
             Status = ScheduleStatus.Concluded;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
 
         internal void SetStatusCanceled()
         {
             Status = ScheduleStatus.Canceled;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
     }
 }

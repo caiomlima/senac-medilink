@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Senac.Medilink.Data.Entity;
 using Senac.Medilink.Data.Entity.User;
 
@@ -8,6 +9,7 @@ namespace Senac.Medilink.Data
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<User> Users { get; set; }
@@ -23,6 +25,15 @@ namespace Senac.Medilink.Data
         {
             modelBuilder
                 .ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "Medilink.db" };
+            var connectionString = connectionStringBuilder.ToString();
+            var connection = new SqliteConnection(connectionString);
+
+            optionsBuilder.UseSqlite(connection);
         }
     }
 }

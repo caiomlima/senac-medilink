@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Senac.Medilink.Data;
 
@@ -16,24 +15,18 @@ namespace Senac.Medilink.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
             modelBuilder.Entity("Senac.Medilink.Data.Entity.ProfessionalSpecialty", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("INTEGER")
                         .HasDefaultValue(true)
                         .HasColumnName("active");
 
@@ -42,13 +35,13 @@ namespace Senac.Medilink.Migrations
                         .HasColumnName("createdAt");
 
                     b.Property<long>("ProfessionalId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<long>("SpecialtyId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<long>("UnitId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime")
@@ -71,31 +64,29 @@ namespace Senac.Medilink.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
-
                     b.Property<int>("DayOfWeek")
-                        .HasColumnType("int")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("dayOfWeek");
 
                     b.Property<TimeSpan>("EndTime")
-                        .HasColumnType("time(6)")
+                        .HasColumnType("TEXT")
                         .HasColumnName("endTime");
 
                     b.Property<long>("ProfessionalId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<long>("ProfessionalSpecialtyId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<TimeSpan>("StartTime")
-                        .HasColumnType("time(6)")
+                        .HasColumnType("TEXT")
                         .HasColumnName("startTime");
 
                     b.Property<long>("UnitId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -114,14 +105,12 @@ namespace Senac.Medilink.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("INTEGER")
                         .HasDefaultValue(true)
                         .HasColumnName("active");
 
@@ -134,37 +123,37 @@ namespace Senac.Medilink.Migrations
                         .HasColumnName("endDate");
 
                     b.Property<int>("Form")
-                        .HasColumnType("int")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("form");
 
                     b.Property<long>("PatientId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<long>("ProfessionalId")
-                        .HasColumnType("bigint");
+                    b.Property<long?>("ProfessionalId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Result")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("result");
 
                     b.Property<long>("SpecialtyId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime")
                         .HasColumnName("startDate");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("status");
 
                     b.Property<int>("Type")
-                        .HasColumnType("int")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("type");
 
                     b.Property<long>("UnitId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime")
@@ -193,14 +182,12 @@ namespace Senac.Medilink.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("INTEGER")
                         .HasDefaultValue(true)
                         .HasColumnName("active");
 
@@ -210,12 +197,12 @@ namespace Senac.Medilink.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("description");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("name");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -231,14 +218,12 @@ namespace Senac.Medilink.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("INTEGER")
                         .HasDefaultValue(true)
                         .HasColumnName("active");
 
@@ -248,12 +233,12 @@ namespace Senac.Medilink.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("description");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("name");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -269,12 +254,12 @@ namespace Senac.Medilink.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("INTEGER")
                         .HasDefaultValue(true)
                         .HasColumnName("active");
 
@@ -284,12 +269,12 @@ namespace Senac.Medilink.Migrations
 
                     b.Property<string>("Document")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("document");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("name");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -305,12 +290,12 @@ namespace Senac.Medilink.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("INTEGER")
                         .HasDefaultValue(true)
                         .HasColumnName("active");
 
@@ -320,16 +305,16 @@ namespace Senac.Medilink.Migrations
 
                     b.Property<string>("Document")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("document");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("name");
 
-                    b.Property<long>("SpecialtyId")
-                        .HasColumnType("bigint");
+                    b.Property<long?>("SpecialtyId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime")
@@ -346,14 +331,12 @@ namespace Senac.Medilink.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<bool>("Active")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("INTEGER")
                         .HasDefaultValue(true)
                         .HasColumnName("active");
 
@@ -363,12 +346,12 @@ namespace Senac.Medilink.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(255)")
+                        .HasColumnType("TEXT")
                         .HasColumnName("email");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("TEXT")
                         .HasColumnName("password");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -376,7 +359,7 @@ namespace Senac.Medilink.Migrations
                         .HasColumnName("updatedAt");
 
                     b.Property<int>("UserType")
-                        .HasColumnType("int")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("userType");
 
                     b.HasKey("Id");
@@ -442,9 +425,7 @@ namespace Senac.Medilink.Migrations
 
                     b.HasOne("Senac.Medilink.Data.Entity.User.Professional", "Professional")
                         .WithMany("Schedules")
-                        .HasForeignKey("ProfessionalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProfessionalId");
 
                     b.HasOne("Senac.Medilink.Data.Entity.Unit", "Unit")
                         .WithMany("Schedules")
@@ -475,14 +456,12 @@ namespace Senac.Medilink.Migrations
                     b.HasOne("Senac.Medilink.Data.Entity.User.User", "User")
                         .WithOne("Professional")
                         .HasForeignKey("Senac.Medilink.Data.Entity.User.Professional", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Senac.Medilink.Data.Entity.Specialty", null)
                         .WithMany("Professionals")
-                        .HasForeignKey("SpecialtyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SpecialtyId");
 
                     b.Navigation("User");
                 });

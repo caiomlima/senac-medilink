@@ -39,7 +39,7 @@ public class Program
 
         builder.Services.ConfigureApplicationCookie(options =>
         {
-            options.LoginPath = "/Auth/Login";
+            options.LoginPath = "/Auth/Index";
         });
 
         var app = builder.Build();
