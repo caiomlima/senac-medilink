@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Senac.Medilink", "Senac.Medilink\Senac.Medilink.csproj", "{E000C0F2-22B0-4FA2-A0B5-DA70F486388B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senac.Medilink.Test", "Senac.Medilink.Test\Senac.Medilink.Test.csproj", "{E145CAC9-9504-4D58-8583-44AD9A5748CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E000C0F2-22B0-4FA2-A0B5-DA70F486388B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E000C0F2-22B0-4FA2-A0B5-DA70F486388B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E000C0F2-22B0-4FA2-A0B5-DA70F486388B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E145CAC9-9504-4D58-8583-44AD9A5748CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E145CAC9-9504-4D58-8583-44AD9A5748CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E145CAC9-9504-4D58-8583-44AD9A5748CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E145CAC9-9504-4D58-8583-44AD9A5748CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

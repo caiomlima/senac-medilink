@@ -31,40 +31,24 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .Property(p => p.StartDate)
                 .HasColumnName("startDate")
                 .HasColumnType("datetime")
-                .HasConversion(new ValueConverter<DateTime, DateTime>(
-                    v => v.ToUniversalTime(),
-                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
-                )
                 .IsRequired();
 
             builder
                 .Property(p => p.EndDate)
                 .HasColumnName("endDate")
                 .HasColumnType("datetime")
-                .HasConversion(new ValueConverter<DateTime, DateTime>(
-                    v => v.ToUniversalTime(),
-                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
-                )
                 .IsRequired();
 
             builder
                 .Property(p => p.CreatedAt)
                 .HasColumnName("createdAt")
                 .HasColumnType("datetime")
-                .HasConversion(new ValueConverter<DateTime, DateTime>(
-                    v => v.ToUniversalTime(),
-                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
-                )
                 .IsRequired();
 
             builder
                 .Property(p => p.UpdatedAt)
                 .HasColumnName("updatedAt")
                 .HasColumnType("datetime")
-                .HasConversion(new ValueConverter<DateTime, DateTime>(
-                    v => v.ToUniversalTime(),
-                    v => DateTime.SpecifyKind(v, DateTimeKind.Utc))
-                )
                 .IsRequired();
 
             builder

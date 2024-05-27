@@ -13,8 +13,8 @@ namespace Senac.Medilink.Data.Entity
         {
             Name = name;
             Description = description;
-            CreatedAt = DateTime.UtcNow;
-            UpdatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             Active = true;
             Professionals = new List<Professional>();
             ProfessionalSpecialties = new List<ProfessionalSpecialty>();
@@ -32,7 +32,7 @@ namespace Senac.Medilink.Data.Entity
         internal void Inactivate()
         {
             Active = false;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
     }
 }

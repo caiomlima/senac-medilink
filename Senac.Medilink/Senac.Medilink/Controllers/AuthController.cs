@@ -19,6 +19,9 @@ namespace Senac.Medilink.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (Request.Headers.ContainsKey("Authorization"))
+                return RedirectToAction("Index", "Home");
+
             return View();
         }
 
@@ -33,6 +36,7 @@ namespace Senac.Medilink.Controllers
             try
             {
                 var token = await _loginService.LoginAsync(request, cancellationToken); 
+
                 Response.Cookies.Append("jwt", token, new CookieOptions
                 {
                     HttpOnly = true,
@@ -40,6 +44,7 @@ namespace Senac.Medilink.Controllers
                     SameSite = SameSiteMode.Strict,
                     Expires = DateTime.UtcNow.AddHours(1)
                 }); 
+
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)

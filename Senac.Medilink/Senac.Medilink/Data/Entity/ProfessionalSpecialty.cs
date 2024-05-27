@@ -12,8 +12,8 @@ namespace Senac.Medilink.Data.Entity
             long professionalId,
             long unitId)
         {
-            CreatedAt = DateTime.UtcNow;
-            UpdatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             Active = true;
             SpecialtyId = specialtyId;
             ProfessionalId = professionalId;
@@ -34,7 +34,7 @@ namespace Senac.Medilink.Data.Entity
         internal void Inactivate()
         {
             Active = false;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
     }
 }

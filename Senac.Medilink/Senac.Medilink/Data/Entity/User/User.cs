@@ -16,15 +16,9 @@ namespace Senac.Medilink.Data.Entity.User
             Email = email;
             Password = password;
             UserType = userType;
-            CreatedAt = DateTime.UtcNow;
-            UpdatedAt = DateTime.UtcNow;
+            CreatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             Active = true;
-
-            //if (professional is not null)
-            //    Professional = professional;
-
-            //if (patient is not null)
-            //    Patient = patient;
         }
 
         public string Email { get; private set; }
@@ -50,19 +44,19 @@ namespace Senac.Medilink.Data.Entity.User
         internal void Inactivate()
         {
             Active = false;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
 
         internal void UpdateEmail(string email) 
         {
             Email = email;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
 
         internal void UpdatePassword(string password)
         {
             Password = password;
-            UpdatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.Now;
         }
 
         // usar isso pra pegar a role pelo type

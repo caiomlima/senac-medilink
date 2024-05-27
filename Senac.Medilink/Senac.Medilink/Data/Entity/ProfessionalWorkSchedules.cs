@@ -30,5 +30,10 @@ namespace Senac.Medilink.Data.Entity
 
         public virtual Professional Professional { get; private set; }
         public virtual Unit Unit { get; private set; }
+
+        public bool ScheduleOverlap(DateTime startTime, DateTime endTime)
+        {
+            return StartTime < endTime.TimeOfDay && startTime.TimeOfDay < EndTime;
+        }
     }
 }
