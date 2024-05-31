@@ -20,5 +20,14 @@ namespace Senac.Medilink.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> _UnitLayout()
+        {
+            return View();
+        }
+        public async Task<IActionResult> Agenda()
+        {
+            return View();
+        }
+
     }
 }
