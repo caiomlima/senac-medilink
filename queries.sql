@@ -34,11 +34,35 @@ INSERT INTO medilink.specialty (name,description,createdAt,updatedAt,active,type
 INSERT INTO medilink.specialty (name,description,createdAt,updatedAt,active,type) VALUES ('Cardiovascular','Cardiovascular','2024-06-01 15:00:00','2024-06-01 15:00:00',1,2);
 
 INSERT INTO medilink.professionalSpecialty (SpecialtyId,ProfessionalId,UnitId,createdAt,updatedAt,active) VALUES (2,2,2,'2024-05-27 20:00:00','2024-05-27 20:00:00',1);
+INSERT INTO medilink.professionalSpecialty (SpecialtyId,ProfessionalId,UnitId,createdAt,updatedAt,active) VALUES (1,3,2,'2024-05-27 20:00:00','2024-05-27 20:00:00',1);
+INSERT INTO medilink.professionalSpecialty (SpecialtyId,ProfessionalId,UnitId,createdAt,updatedAt,active) VALUES (3,4,2,'2024-05-27 20:00:00','2024-05-27 20:00:00',1);
+INSERT INTO medilink.professionalSpecialty (SpecialtyId,ProfessionalId,UnitId,createdAt,updatedAt,active) VALUES (4,5,2,'2024-05-27 20:00:00','2024-05-27 20:00:00',1);
+INSERT INTO medilink.professionalSpecialty (SpecialtyId,ProfessionalId,UnitId,createdAt,updatedAt,active) VALUES (3,6,2,'2024-05-27 20:00:00','2024-05-27 20:00:00',1);
+INSERT INTO medilink.professionalSpecialty (SpecialtyId,ProfessionalId,UnitId,createdAt,updatedAt,active) VALUES (2,7,2,'2024-05-27 20:00:00','2024-05-27 20:00:00',1);
+INSERT INTO medilink.professionalSpecialty (SpecialtyId,ProfessionalId,UnitId,createdAt,updatedAt,active) VALUES (1,8,2,'2024-05-27 20:00:00','2024-05-27 20:00:00',1);
 
 -- Horários de trabalho (dia por dia)
 INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (2,2,2,2,'13:00:00', '15:00:00');
 INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (2,2,2,3,'13:00:00', '15:00:00');
 INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (2,2,2,4,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (3,1,3,2,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (3,1,3,3,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (3,1,3,4,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (4,3,4,2,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (4,3,4,3,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (4,3,4,4,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (5,4,5,2,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (5,4,5,3,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (5,4,5,4,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (6,3,6,2,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (6,3,6,3,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (6,3,6,4,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (7,2,7,2,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (7,2,7,3,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (7,2,7,4,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (8,1,8,2,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (8,1,8,3,'13:00:00', '15:00:00');
+INSERT INTO medilink.professionalWorkSchedules (ProfessionalId,UnitId,ProfessionalSpecialtyId,DayOfWeek,StartTime,EndTime) VALUES (8,1,8,4,'13:00:00', '15:00:00');
 
 -- Especialidades para fazer exames
 INSERT INTO medilink.examSpecialty (unitId,specialtyId,createdAt,updatedAt,active) VALUES (1,5,'2024-06-02 14:00:00', '2024-06-02 14:00:00',1);
