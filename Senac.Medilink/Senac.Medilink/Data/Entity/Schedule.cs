@@ -11,8 +11,8 @@ namespace Senac.Medilink.Data.Entity
         public Schedule(
             long patientId,
             long? professionalId,
-            long specialtyId,
-            long unitId,
+            long? specialtyId,
+            long? unitId,
             DateTime startDate,
             DateTime endDate,
             FormOfService formOfService,
@@ -30,12 +30,13 @@ namespace Senac.Medilink.Data.Entity
             Status = ScheduleStatus.Pending;
             Form = formOfService;
             Active = true;
+            Result = "";
         }
 
         public long PatientId { get; private set; }
         public long? ProfessionalId { get; private set; }
-        public long UnitId { get; private set; }
-        public long SpecialtyId { get; private set; }
+        public long? UnitId { get; private set; }
+        public long? SpecialtyId { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public DateTime CreatedAt { get; private set; }
@@ -43,12 +44,13 @@ namespace Senac.Medilink.Data.Entity
         public ServiceType Type { get; private set; }
         public ScheduleStatus Status { get; private set; }
         public FormOfService Form { get; private set; }
-        public string Result { get; private set; }
+        public string? Result { get; private set; }
         public bool Active { get; private set; }
 
         public virtual Patient Patient { get; private set; }
         public virtual Professional Professional { get; private set; }
         public virtual Unit Unit { get; private set; }
+        public virtual Specialty Specialty { get; private set; }
 
         internal void Inactivate()
         {

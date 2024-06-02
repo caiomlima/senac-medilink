@@ -1,0 +1,28 @@
+﻿@using Senac.Medilink.Data.Dto.Result;
+@model List<UnitResult>;
+@{
+    ViewData["Title"] = "Agendar exame";
+}
+
+<div class="container text-center">
+    <h2 style="padding-bottom:20px">Selecione a unidade</h2>
+
+    <form asp-action="Unities" method="post" id="unitForm">
+        <input type="hidden" id="unitId" name="unitId" value="" />
+        <input type="hidden" id="unitName" name="unitName" value="" />
+        <input type="hidden" id="unitDescription" name="unitDescription" value="" />
+        @foreach (var unit in Model)
+        {
+            <button type="button" class="btn btn-primary" style="width:70%; margin-bottom:20px" onclick="submitForm('@unit.Id', '@unit.Name', '@unit.Description')">@unit.Name</button>
+        }
+    </form>
+</div>
+
+<script>
+    function submitForm(unitId, unitName, unitDescription) {
+        document.getElementById('unitId').value = unitId;
+        document.getElementById('unitName').value = unitName;
+        document.getElementById('unitDescription').value = unitDescription;
+        document.getElementById('unitForm').submit();
+    }
+</script>

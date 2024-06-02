@@ -36,36 +36,5 @@ namespace Senac.Medilink.Services
 
             return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor));
         }
-
-        public string ValidateToken(string token)
-        {
-            if (token == null)
-                return null;
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Convert.ToString(_configuration["config:JwtKey"]));
-            try
-            {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero
-
-                }, out SecurityToken validatedToken);
-
-                var jwtToken = (JwtSecurityToken)validatedToken;
-                var id = jwtToken.Claims.First(claim => claim.Type == "id").Value;
-                var role = jwtToken.Claims.First(claim => claim.Type == "role").Value;
-
-                return id;
-            }
-            catch
-            {
-                return null;
-            }
-        }
     }
 }

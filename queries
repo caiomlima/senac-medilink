@@ -1,0 +1,9 @@
+INSERT INTO unit (name,description,createdAt,updatedAt,active) VALUES ('Lapa Tito','R. Tito, 54 - Vila Romana, São Paulo - SP, 05051-000','2024-05-26 22:46:50','2024-05-26 22:46:50',1);
+INSERT INTO unit (name,description,createdAt,updatedAt,active) VALUES ('Pirituba','R. ABC, 123, São Paulo - SP, 05900-000','2024-05-76 20:0:00','2024-05-76 20:0:00',1);
+INSERT INTO unit (name,description,createdAt,updatedAt,active) VALUES ('Barra Funda','R. ABC, 123, São Paulo - SP, 05900-000','2024-05-76 20:0:00','2024-05-76 20:0:00',1);
+INSERT INTO unit (name,description,createdAt,updatedAt,active) VALUES ('Santana','R. ABC, 123, São Paulo - SP, 05900-000','2024-05-76 20:0:00','2024-05-76 20:0:00',1);
+INSERT INTO unit (name,description,createdAt,updatedAt,active) VALUES ('Casa Verde','R. ABC, 123, São Paulo - SP, 05900-000','2024-05-76 20:0:00','2024-05-76 20:0:00',1);
+
+
+
+select * from unit;

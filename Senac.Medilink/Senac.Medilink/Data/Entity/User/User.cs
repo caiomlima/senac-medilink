@@ -20,7 +20,7 @@ namespace Senac.Medilink.Data.Entity.User
             UpdatedAt = DateTime.Now;
             Active = true;
         }
-
+            
         public string Email { get; private set; }
         public string Password { get; private set; }
         public UserType UserType { get; private set; }

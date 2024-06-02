@@ -30,7 +30,7 @@ namespace Senac.Medilink.Services
                 .Where(u => u.Email == request.Email)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (existingUser is not null)
+            if (existingUser != null)
                 throw new Exception("Usuário já existente com email informado");
 
             var userPassword = _passwordHasher.HashPassword(request, request.Password);

@@ -1,0 +1,34 @@
+﻿@using Senac.Medilink.Data.Dto.Result;
+@model List<FreeWorkScheduleSlotResult>;
+@{
+    ViewData["Title"] = "Agendar exame";
+}
+
+<div class="container text-center">
+    <h2 style="padding-bottom:20px">Selecione um horário</h2>
+
+    <form asp-action="UnitWorkSchedules" method="post" id="workScheduleForm">
+        @foreach (var workScheduleGrouped in Model.GroupBy(x => x.Day))
+        {
+            <h4>@workScheduleGrouped.Key</h4>
+
+            <input type="hidden" id="day" name="day"/>
+            <input type="hidden" id="startTime" name="startTime"/>
+            @foreach (var workSchedule in workScheduleGrouped)
+            {
+                <button type="submit" class="btn btn-primary" style="width:70%; margin-bottom:20px" onclick="submitForm('@workSchedule.Day', '@workSchedule.StartTime')">@workSchedule.Day | @workSchedule.StartTime</button>
+            }
+
+            <br/>
+            <br/>
+        }
+    </form>
+</div>
+
+<script>
+    function submitForm(day, startTime) {
+        document.getElementById('day').value = day;
+        document.getElementById('startTime').value = startTime;
+        document.getElementById('workScheduleForm').submit();
+    }
+</script>

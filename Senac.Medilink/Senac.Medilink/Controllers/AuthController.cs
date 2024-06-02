@@ -25,11 +25,6 @@ namespace Senac.Medilink.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Register()
-        {
-            return View();
-        }
-
         [HttpPost]
         public async Task<IActionResult> Index(LoginUserRequest request, CancellationToken cancellationToken)
         {
@@ -49,9 +44,13 @@ namespace Senac.Medilink.Controllers
             }
             catch (Exception ex)
             {
-                // Tratar exceções adequadamente
-                return BadRequest(ex.Message);
+                return ViewBag(ex.Message);
             }
+        }
+
+        public async Task<IActionResult> Register()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -63,11 +62,10 @@ namespace Senac.Medilink.Controllers
             }
             catch (Exception ex)
             {
-                // Tratar exceções adequadamente
-                return BadRequest(ex.Message);
+                return ViewBag(ex.Message);
             }
 
-            return RedirectToAction("Login");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

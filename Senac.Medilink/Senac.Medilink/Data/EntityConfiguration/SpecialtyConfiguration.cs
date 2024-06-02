@@ -41,6 +41,12 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .IsRequired();
 
             builder
+                .Property(p => p.Type)
+                .HasColumnName("type")
+                .HasConversion<int>()
+                .IsRequired();
+
+            builder
                 .Property(x => x.Active)
                 .HasColumnName("active")
                 .HasDefaultValue(true)

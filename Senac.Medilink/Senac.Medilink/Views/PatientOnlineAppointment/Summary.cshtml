@@ -1,0 +1,24 @@
+﻿@using Senac.Medilink.Data.Dto.Result;
+@model ScheduleSummary;
+@{
+    ViewData["Title"] = "Agendar consulta online";
+}
+
+<div class="container">
+    <h2>Confirmar Agendamento</h2>
+    <p>Modalidade: Online</p>
+    <p>Profissional: @Model.ProfessionalName</p>
+    <p>Especialidade: @Model.SpecialtyName</p>
+    <p>Data: @Model.Date</p>
+
+    <form asp-action="SubmitSchedule" method="post">
+        <input type="hidden" name="ProfessionalId" value="@Model.ProfessionalId" />
+        <input type="hidden" name="SpecialtyId" value="@Model.SpecialtyId" />
+        <input type="hidden" name="StartDate" value="@Model.Date" />
+        <input type="hidden" name="EndDate" value="@Model.Date" />
+
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Agendar</button>
+        </div>
+    </form>
+</div>

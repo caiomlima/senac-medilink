@@ -28,13 +28,6 @@
         Patient = 3,
     }
 
-    public enum UserRole
-    {
-        Admin = 1,
-        Professional = 2,
-        Patient = 3,
-    }
-
     public enum ServiceType
     {
         Appointment = 1,

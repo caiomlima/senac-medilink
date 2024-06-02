@@ -71,7 +71,8 @@ namespace Senac.Medilink.Data.EntityConfiguration
 
             builder
                 .Property(x => x.Result)
-                .HasColumnName("result");
+                .HasColumnName("result")
+                .HasDefaultValue(null);
 
             builder
                 .Property(x => x.Active)
@@ -93,6 +94,11 @@ namespace Senac.Medilink.Data.EntityConfiguration
                 .HasOne(x => x.Unit)
                 .WithMany(x => x.Schedules)
                 .HasForeignKey(x => x.UnitId);
+
+            builder
+                .HasOne(x => x.Specialty)
+                .WithMany(x => x.Schedules)
+                .HasForeignKey(x => x.SpecialtyId);
         }
     }
 }

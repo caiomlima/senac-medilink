@@ -25,6 +25,7 @@ namespace Senac.Medilink.Data.EntityConfiguration
             builder
                 .Property(x => x.Email)
                 .HasColumnName("email")
+                .HasMaxLength(300)
                 .IsRequired();
 
             builder

@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -11,69 +12,82 @@ namespace Senac.Medilink.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateTable(
                 name: "specialty",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<string>(type: "TEXT", nullable: false),
-                    description = table.Column<string>(type: "TEXT", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    description = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     createdAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    active = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_specialty", x => x.id);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "unit",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<string>(type: "TEXT", nullable: false),
-                    description = table.Column<string>(type: "TEXT", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    description = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     createdAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    active = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_unit", x => x.id);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "user",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    email = table.Column<string>(type: "TEXT", nullable: false),
-                    password = table.Column<string>(type: "TEXT", nullable: false),
-                    userType = table.Column<int>(type: "INTEGER", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    email = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    password = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    userType = table.Column<int>(type: "int", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    active = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_user", x => x.id);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "patient",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<string>(type: "TEXT", nullable: false),
-                    document = table.Column<string>(type: "TEXT", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false),
+                    name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    document = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     createdAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    active = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -83,20 +97,22 @@ namespace Senac.Medilink.Migrations
                         column: x => x.id,
                         principalTable: "user",
                         principalColumn: "id");
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "professional",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<string>(type: "TEXT", nullable: false),
-                    document = table.Column<string>(type: "TEXT", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false),
+                    name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    document = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     createdAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    active = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true),
-                    SpecialtyId = table.Column<long>(type: "INTEGER", nullable: true)
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true),
+                    SpecialtyId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -111,20 +127,21 @@ namespace Senac.Medilink.Migrations
                         column: x => x.id,
                         principalTable: "user",
                         principalColumn: "id");
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "professionalSpecialty",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    SpecialtyId = table.Column<long>(type: "INTEGER", nullable: false),
-                    ProfessionalId = table.Column<long>(type: "INTEGER", nullable: false),
-                    UnitId = table.Column<long>(type: "INTEGER", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    SpecialtyId = table.Column<long>(type: "bigint", nullable: false),
+                    ProfessionalId = table.Column<long>(type: "bigint", nullable: false),
+                    UnitId = table.Column<long>(type: "bigint", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    active = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -147,20 +164,21 @@ namespace Senac.Medilink.Migrations
                         principalTable: "unit",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "professionalWorkSchedules",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ProfessionalId = table.Column<long>(type: "INTEGER", nullable: false),
-                    UnitId = table.Column<long>(type: "INTEGER", nullable: false),
-                    ProfessionalSpecialtyId = table.Column<long>(type: "INTEGER", nullable: false),
-                    dayOfWeek = table.Column<int>(type: "INTEGER", nullable: false),
-                    startTime = table.Column<TimeSpan>(type: "TEXT", nullable: false),
-                    endTime = table.Column<TimeSpan>(type: "TEXT", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ProfessionalId = table.Column<long>(type: "bigint", nullable: false),
+                    UnitId = table.Column<long>(type: "bigint", nullable: false),
+                    ProfessionalSpecialtyId = table.Column<long>(type: "bigint", nullable: false),
+                    dayOfWeek = table.Column<int>(type: "int", nullable: false),
+                    startTime = table.Column<TimeSpan>(type: "time(6)", nullable: false),
+                    endTime = table.Column<TimeSpan>(type: "time(6)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -177,27 +195,29 @@ namespace Senac.Medilink.Migrations
                         principalTable: "unit",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "schedule",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    PatientId = table.Column<long>(type: "INTEGER", nullable: false),
-                    ProfessionalId = table.Column<long>(type: "INTEGER", nullable: true),
-                    UnitId = table.Column<long>(type: "INTEGER", nullable: false),
-                    SpecialtyId = table.Column<long>(type: "INTEGER", nullable: false),
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PatientId = table.Column<long>(type: "bigint", nullable: false),
+                    ProfessionalId = table.Column<long>(type: "bigint", nullable: true),
+                    UnitId = table.Column<long>(type: "bigint", nullable: false),
+                    SpecialtyId = table.Column<long>(type: "bigint", nullable: false),
                     startDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     endDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     createdAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     updatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
-                    type = table.Column<int>(type: "INTEGER", nullable: false),
-                    status = table.Column<int>(type: "INTEGER", nullable: false),
-                    form = table.Column<int>(type: "INTEGER", nullable: false),
-                    result = table.Column<string>(type: "TEXT", nullable: false),
-                    active = table.Column<bool>(type: "INTEGER", nullable: false, defaultValue: true)
+                    type = table.Column<int>(type: "int", nullable: false),
+                    status = table.Column<int>(type: "int", nullable: false),
+                    form = table.Column<int>(type: "int", nullable: false),
+                    result = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    active = table.Column<bool>(type: "tinyint(1)", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -219,7 +239,8 @@ namespace Senac.Medilink.Migrations
                         principalTable: "unit",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                });
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
                 name: "IX_professional_SpecialtyId",

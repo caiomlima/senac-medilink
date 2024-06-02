@@ -9,31 +9,33 @@ namespace Senac.Medilink.Data
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            //// Para usar SQLite
+            //Database.EnsureCreated();
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Professional> Professionals { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
-        public DbSet<Unit> Units { get; set; }
+        public DbSet<Unit> Unities { get; set; }
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<ProfessionalSpecialty> ProfessionalSpecialties { get; set; }
+        public DbSet<ExamSpecialty> ExamSpecialties { get; set; }
         public DbSet<ProfessionalWorkSchedules> ProfessionalWorkSchedules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "Medilink.db" };
-            var connectionString = connectionStringBuilder.ToString();
-            var connection = new SqliteConnection(connectionString);
+        //// Para usar SQLite
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "Medilink.db" };
+        //    var connectionString = connectionStringBuilder.ToString();
+        //    var connection = new SqliteConnection(connectionString);
 
-            optionsBuilder.UseSqlite(connection);
-        }
+        //    optionsBuilder.UseSqlite(connection);
+        //}
     }
 }

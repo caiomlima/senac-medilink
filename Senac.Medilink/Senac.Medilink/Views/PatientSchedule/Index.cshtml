@@ -1,0 +1,69 @@
+﻿@using Senac.Medilink.Common
+@using Senac.Medilink.Data.Dto.Result
+@model List<ScheduleResult>
+@{
+    ViewData["Title"] = "Agendamentos";
+}
+
+<div class="container d-flex justify-content-around flex-column" style="display:flex; align-items:center">
+    <h2>Agendamentos</h2>
+
+    @foreach (var schedule in Model)
+    {
+        <div class="card text-white bg-primary" style="width: 90%; margin-bottom:20px; font-weight:50">
+            <div class="card-body">
+                <h4 class="card-title">
+                    @{
+                        string title = "";
+                        if (schedule.Type == ServiceType.Appointment && schedule.Form == FormOfService.Presential)
+                            title = "Agendamento Presencial";
+                        else if (schedule.Type == ServiceType.Appointment && schedule.Form == FormOfService.Online)
+                            title = "Agendamento Online";
+                        else
+                            title = "Exame";
+                    }
+                    @title
+                </h4>
+                <h5 class="card-text mb-2" style="padding-top:10px; color:lightgrey; font-weight:50">@schedule.SpecialtyName</h5>
+                <h5 class="card-text mb-2" style="color:lightgrey; font-weight:50">@schedule.ProfessionalName</h5>
+                <h5 class="card-text mb-2" style="color:lightgrey; font-weight:50">@schedule.Date</h5>
+                <h5 class="card-text mb-2" style="color:lightgrey; font-weight:50">@schedule.UnitName</h5>
+                <h5 class="card-text mb-2" style="color:lightgrey; font-weight:50">
+                    Status:
+                    @{
+                        string status = schedule.Status switch
+                        {
+                            ScheduleStatus.Pending => "Pendente",
+                            ScheduleStatus.Concluded => "Concluído",
+                            ScheduleStatus.Canceled => "Cancelado",
+                            _ => ""
+                        };
+                        @status
+                        ;
+                    }
+                </h5>
+                @{
+                    if (@schedule.Date > DateTime.Now)
+                    {
+                        <div class="card-body d-flex justify-content-center flex-column">
+                            <form asp-action="Delete" method="post">
+                                <input type="hidden" name="scheduleId" value="@schedule.Id" />
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-danger" style="width:180px">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    function confirmAction(scheduleId) {
+        window.location.href = '@Url.Action("Delete")' + '?scheduleId=' + scheduleId;
+    }
+</script>

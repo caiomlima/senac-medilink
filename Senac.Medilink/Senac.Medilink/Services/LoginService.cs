@@ -33,10 +33,10 @@ namespace Senac.Medilink.Services
                 .Where(x => x.Email == loginRequest.Email)
                 .FirstOrDefaultAsync(cancellationToken);
 
-            if (user is null)
+            if (user == null)
                 throw new Exception("Usuário não encontrado");
 
-            if (_passwordHasher.VerifyHashedPassword(user, user.Password, loginRequest.Password) is PasswordVerificationResult.Failed)
+            if (_passwordHasher.VerifyHashedPassword(user, user.Password, loginRequest.Password) == PasswordVerificationResult.Failed)
                 throw new Exception("Senha incorreta");
             
             return _tokenService.GenerateToken(user);

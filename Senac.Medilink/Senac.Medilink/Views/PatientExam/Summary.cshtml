@@ -1,0 +1,24 @@
+﻿@using Senac.Medilink.Data.Dto.Result;
+@model ScheduleSummary;
+@{
+    ViewData["Title"] = "Agendar exame";
+}
+
+<div class="container">
+    <h2>Confirmar Exame</h2>
+    <p>Especialidade: @Model.SpecialtyName</p>
+    <p>Data: @Model.Date</p>
+    <p>Unidade: @Model.UnitName</p>
+    <p>Descrição: @Model.UnitDescription</p>
+
+    <form asp-action="SubmitSchedule" method="post">
+        <input type="hidden" name="SpecialtyId" value="@Model.SpecialtyId" />
+        <input type="hidden" name="UnitId" value="@Model.UnitId" />
+        <input type="hidden" name="StartDate" value="@Model.Date" />
+        <input type="hidden" name="EndDate" value="@Model.Date" />
+
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Agendar</button>
+        </div>
+    </form>
+</div>

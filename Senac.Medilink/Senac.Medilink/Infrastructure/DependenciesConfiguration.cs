@@ -13,14 +13,15 @@ namespace Senac.Medilink.Infrastructure
     {
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddDbContext<DatabaseContext>(options => options
-            //    .UseMySql(
-            //        configuration["MySqlConnectionString"],
-            //        new MySqlServerVersion(new Version(8, 0, 0)),
-            //        options => options.CommandTimeout(20)));
+            services.AddDbContext<DatabaseContext>(options => options
+                .UseMySql(
+                    configuration["MySqlConnectionString"],
+                    new MySqlServerVersion(new Version(8, 0, 0)),
+                    options => options.CommandTimeout(20)));
 
-            services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlite(configuration.GetConnectionString("SQLiteConnectionString")));
+            //// Para usar SQLite
+            //services.AddDbContext<DatabaseContext>(options =>
+            //    options.UseSqlite(configuration.GetConnectionString("SQLiteConnectionString")));
 
             services.AddScoped<IPasswordHasher<RegisterUserRequest>, PasswordHasher<RegisterUserRequest>>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

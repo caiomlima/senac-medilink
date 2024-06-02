@@ -1,0 +1,26 @@
+﻿@using Senac.Medilink.Data.Dto.Result;
+@model List<ProfessionalsForSchedulingResult>;
+@{
+    ViewData["Title"] = "Agendar consulta online";
+}
+
+<div class="container text-center">
+    <h2 style="padding-bottom:20px">Selecione o profissional</h2>
+
+    <form asp-action="Professionals" method="post" id="professionalForm">
+        <input type="hidden" id="professionalId" name="professionalId" value="" />
+        <input type="hidden" id="professionalName" name="professionalName" value="" />
+        @foreach (var professional in Model)
+        {
+            <button class="btn btn-primary" type="button" style="width:70%; margin-bottom:20px" onclick="submitForm('@professional.Id', '@professional.Name')">@professional.Name</button>
+        }
+    </form>
+</div>
+
+<script>
+    function submitForm(professionalId, professionalName) {
+        document.getElementById('professionalId').value = professionalId;
+        document.getElementById('professionalName').value = professionalName;
+        document.getElementById('professionalForm').submit();
+    }
+</script>

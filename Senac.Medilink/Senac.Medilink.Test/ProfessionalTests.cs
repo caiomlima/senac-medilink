@@ -45,10 +45,10 @@ namespace Senac.Medilink.Test
             mockDbContext.Setup(db => db.Schedules).Returns(professionalSchedulesDbSet.Object);
 
             var service = new ScheduleService(mockDbContext.Object);
-            var availableSlots = await service.GetAvailableSlotsForScheduling(professionalId, startDate, durationInMinutes, cancellationToken);
+            var availableSlots = await service.GetAvailableSlotsOfProfessionalForSchedulingAsync(professionalId, null, startDate, durationInMinutes, cancellationToken);
 
             Assert.NotNull(availableSlots);
-            Assert.Equals(2, availableSlots.Count);
+            Assert.Equals(2, availableSlots.Count());
             Assert.True(availableSlots.Any(slot => slot.StartTime == new TimeSpan(13, 0, 0) && slot.EndTime == new TimeSpan(13, 20, 0)));
             Assert.True(availableSlots.Any(slot => slot.StartTime == new TimeSpan(13, 40, 0) && slot.EndTime == new TimeSpan(14, 0, 0)));
         }

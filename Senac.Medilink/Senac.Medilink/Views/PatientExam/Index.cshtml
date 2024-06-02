@@ -1,0 +1,26 @@
+﻿@using Senac.Medilink.Data.Dto.Result;
+@model List<SpecialtyResult>;
+@{
+    ViewData["Title"] = "Agendar exame";
+}
+
+<div class="container text-center">
+    <h2 style="padding-bottom:20px">Selecione a especialidade</h2>
+
+    <form asp-action="Index" method="post" id="specialtyForm">
+        <input type="hidden" id="specialtyId" name="specialtyId" value="" />
+        <input type="hidden" id="specialtyName" name="specialtyName" value="" />
+        @foreach (var specialty in Model)
+        {
+            <button class="btn btn-primary mb-1 mt-1" type="button" style="width:70%; margin-bottom:20px" onclick="submitForm('@specialty.Id', '@specialty.Name')">@specialty.Name</button>
+        }
+    </form>
+</div>
+
+<script>
+    function submitForm(specialtyId, specialtyName) {
+        document.getElementById('specialtyId').value = specialtyId;
+        document.getElementById('specialtyName').value = specialtyName;
+        document.getElementById('specialtyForm').submit();
+    }
+</script>
