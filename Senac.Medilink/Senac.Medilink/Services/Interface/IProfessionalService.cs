@@ -1,10 +1,9 @@
 ﻿using Senac.Medilink.Data.Dto.Request;
 using Senac.Medilink.Data.Dto.Result;
 
-namespace Senac.Medilink.Services.Interface
+namespace Senac.Medilink.Services.Interface;
+
+public interface IProfessionalService
 {
-    public interface IProfessionalService
-    {
-        Task<IEnumerable<ProfessionalsForSchedulingResult>> GetForSchedulingAsync(ProfessionalsForSchedulingRequest request, CancellationToken cancellationToken = default);
-    }
+    Task<IEnumerable<ProfessionalsForSchedulingResult>> GetForSchedulingAsync(ProfessionalsForSchedulingRequest request, CancellationToken cancellationToken = default);
 }

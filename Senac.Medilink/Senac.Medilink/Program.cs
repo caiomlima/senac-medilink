@@ -7,8 +7,6 @@ using System.Text;
 
 public class Program
 {
-    public IConfiguration Configuration { get; }
-
     private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);

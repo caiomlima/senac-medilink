@@ -6,40 +6,39 @@ using Senac.Medilink.Data.Dto.Request.Login;
 using Senac.Medilink.Data.Entity.User;
 using Senac.Medilink.Services.Interface;
 
-namespace Senac.Medilink.Services
+namespace Senac.Medilink.Services;
+
+public class LoginService : ILoginService
 {
-    public class LoginService : ILoginService
+    private readonly DatabaseContext _databaseContext;
+    private readonly IPasswordHasher<User> _passwordHasher;
+    private readonly TokenService _tokenService;
+
+    public LoginService(
+        DatabaseContext databaseContext,
+        IPasswordHasher<User> passwordHasher,
+        TokenService tokenService)
     {
-        private readonly DatabaseContext _databaseContext;
-        private readonly IPasswordHasher<User> _passwordHasher;
-        private readonly TokenService _tokenService;
+        _databaseContext = databaseContext;
+        _passwordHasher = passwordHasher;
+        _tokenService = tokenService;
+    }
 
-        public LoginService(
-            DatabaseContext databaseContext,
-            IPasswordHasher<User> passwordHasher,
-            TokenService tokenService)
-        {
-            _databaseContext = databaseContext;
-            _passwordHasher = passwordHasher;
-            _tokenService = tokenService;
-        }
+    public async Task<string> LoginAsync(LoginUserRequest loginRequest, CancellationToken cancellationToken = default)
+    {
+        var user = await _databaseContext.Users
+            .AsNoTracking()
+            .IgnoreAutoIncludes()
+            .IgnoreQueryFilters()
+            .Where(x => x.Email == loginRequest.Email)
+            .FirstOrDefaultAsync(cancellationToken);
 
-        public async Task<string> LoginAsync(LoginUserRequest loginRequest, CancellationToken cancellationToken = default)
-        {
-            var user = await _databaseContext.Users
-                .AsNoTracking()
-                .IgnoreAutoIncludes()
-                .IgnoreQueryFilters()
-                .Where(x => x.Email == loginRequest.Email)
-                .FirstOrDefaultAsync(cancellationToken);
+        if (user == null)
+            throw new Exception("Usuário não encontrado");
 
-            if (user == null)
-                throw new Exception("Usuário não encontrado");
-
-            if (_passwordHasher.VerifyHashedPassword(user, user.Password, loginRequest.Password) == PasswordVerificationResult.Failed)
-                throw new Exception("Senha incorreta");
-            
-            return _tokenService.GenerateToken(user);
-        }
+        if (_passwordHasher.VerifyHashedPassword(user, user.Password, loginRequest.Password) == PasswordVerificationResult.Failed)
+            throw new Exception("Senha incorreta");
+        
+        return _tokenService.GenerateToken(user);
     }
 }

@@ -2,52 +2,51 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Senac.Medilink.Data.Entity;
 
-namespace Senac.Medilink.Data.EntityConfiguration
+namespace Senac.Medilink.Data.EntityConfiguration;
+
+public class ProfessionalWorkSchedulesConfiguration : IEntityTypeConfiguration<ProfessionalWorkSchedules>
 {
-    public class ProfessionalWorkSchedulesConfiguration : IEntityTypeConfiguration<ProfessionalWorkSchedules>
+    public void Configure(EntityTypeBuilder<ProfessionalWorkSchedules> builder)
     {
-        public void Configure(EntityTypeBuilder<ProfessionalWorkSchedules> builder)
-        {
-            builder.ToTable("professionalWorkSchedules");
+        builder.ToTable("professionalWorkSchedules");
 
-            builder.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
 
-            builder.HasIndex(x => x.ProfessionalId);
-            builder.HasIndex(x => x.UnitId);
-            builder.HasIndex(x => x.DayOfWeek);
-            builder.HasIndex(x => new { x.ProfessionalId, x.DayOfWeek });
+        builder.HasIndex(x => x.ProfessionalId);
+        builder.HasIndex(x => x.UnitId);
+        builder.HasIndex(x => x.DayOfWeek);
+        builder.HasIndex(x => new { x.ProfessionalId, x.DayOfWeek });
 
-            builder
-                .Property(x => x.Id)
-                .HasColumnName("id")
-                .ValueGeneratedOnAdd()
-                .IsRequired();
+        builder
+            .Property(x => x.Id)
+            .HasColumnName("id")
+            .ValueGeneratedOnAdd()
+            .IsRequired();
 
-            builder
-                .Property(x => x.DayOfWeek)
-                .HasColumnName("dayOfWeek")
-                .HasConversion<int>()
-                .IsRequired();
+        builder
+            .Property(x => x.DayOfWeek)
+            .HasColumnName("dayOfWeek")
+            .HasConversion<int>()
+            .IsRequired();
 
-            builder
-                .Property(x => x.StartTime)
-                .HasColumnName("startTime")
-                .IsRequired();
+        builder
+            .Property(x => x.StartTime)
+            .HasColumnName("startTime")
+            .IsRequired();
 
-            builder
-                .Property(x => x.EndTime)
-                .HasColumnName("endTime")
-                .IsRequired();
+        builder
+            .Property(x => x.EndTime)
+            .HasColumnName("endTime")
+            .IsRequired();
 
-            builder
-                .HasOne(x => x.Professional)
-                .WithMany(x => x.WorkSchedules)
-                .HasForeignKey(x => x.ProfessionalId);
+        builder
+            .HasOne(x => x.Professional)
+            .WithMany(x => x.WorkSchedules)
+            .HasForeignKey(x => x.ProfessionalId);
 
-            builder
-                .HasOne(x => x.Unit)
-                .WithMany(x => x.WorkSchedules)
-                .HasForeignKey(x => x.UnitId);
-        }
+        builder
+            .HasOne(x => x.Unit)
+            .WithMany(x => x.WorkSchedules)
+            .HasForeignKey(x => x.UnitId);
     }
 }
