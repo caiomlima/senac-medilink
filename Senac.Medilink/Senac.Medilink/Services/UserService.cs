@@ -34,12 +34,12 @@ public class UserService : IUserService
             throw new Exception("Usuário já existente com email informado");
 
         var userPassword = _passwordHasher.HashPassword(request, request.Password);
-        var user = new User(request.Email, userPassword, request.UserType);
+        var user = new User(request.Email, userPassword, Common.UserType.Patient); // UserType fixo por agora
 
-        if (request.UserType is Common.UserType.Professional)
-            user.AddProfessional(request.Name, request.Document);
-        else if (request.UserType is Common.UserType.Patient)
-            user.AddPatient(request.Name, request.Document);
+        //if (request.UserType is Common.UserType.Professional)
+        //    user.AddProfessional(request.Name, request.Document);
+        //else if (request.UserType is Common.UserType.Patient)
+            user.AddPatient(request.Name, request.Document); // UserType fixo por agora
 
         _databaseContext.Add(user);
         await _databaseContext.SaveChangesAsync(cancellationToken);

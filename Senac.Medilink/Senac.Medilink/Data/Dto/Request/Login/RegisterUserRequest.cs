@@ -14,8 +14,8 @@ public class RegisterUserRequest
     [MaxLength(200, ErrorMessage = "A senha poder no máximo 200 caracteres")]
     public string Password { get; set; }
 
-    [Required]
-    public UserType UserType { get; set; } // isso vem do front, quando seleciona um tipo de cadastro
+    //[Required]
+    //public UserType UserType { get; set; } // UserType fixo por agora
 
     [Required]
     [MinLength(1, ErrorMessage = "É necessário informar um nome")]
